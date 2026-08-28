@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHeart, FaStar } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router";
+import { addItemToLocalStorage } from "../../utilitis";
+import { ToastContainer } from "react-toastify";
 
 const PlantDetails = () => {
+  const [plants, setPlants] = useState([]);
   const { plant } = useLoaderData();
   const { plantId } = useParams();
 
@@ -21,6 +24,11 @@ const PlantDetails = () => {
     light,
     size,
   } = filter;
+
+  const handleMyPlantBtn = (id) => {
+    addItemToLocalStorage(id);
+  };
+  console.log(plant);
   return (
     <div className="flex w-11/12 mx-auto mt-5">
       <div className="w-[50%] min-h-screen ">
@@ -55,7 +63,13 @@ const PlantDetails = () => {
           {" "}
           <small className="font-bold">Difficulty</small> : {difficulty}
         </p>
-        <button className=" bg-gray-200 mt-5 px-5 py-2 rounded shadow-2xl flex items-center gap-3 text-sm"><FaHeart color="#FF0000"></FaHeart> Add To MyPlants</button>
+        <button
+          onClick={() => handleMyPlantBtn(`${id}`)}
+          className=" bg-gray-200 mt-5 px-5 py-2 rounded shadow-2xl flex items-center gap-3 text-sm"
+        >
+          <ToastContainer></ToastContainer>
+          <FaHeart color="#FF0000"></FaHeart> Add To MyPlants
+        </button>
       </div>
     </div>
   );
