@@ -5,7 +5,7 @@ import PlantCard from "../../components/Card/PlantCard";
 
 function Plants() {
   const { plant } = useLoaderData();
-  console.log(plant);
+
   return (
     <div className="w-11/12 mx-auto">
       <h1 className="font-bold text-3xl">Explore All Plants</h1>
@@ -38,7 +38,7 @@ function Plants() {
         </div>
       </div>
       <div className="grid grid-cols-4 gap-3">
-        {plant.map((p) => (
+        {plant?.map((p) => (
           <PlantCard p={p}></PlantCard>
         ))}
       </div>

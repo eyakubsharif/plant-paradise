@@ -9,6 +9,7 @@ import Home from "./Pages/Home/Home";
 import Plants from "./Pages/Plants/Plants";
 import MyPlants from "./Pages/MyPlants/MyPlants";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import PlantDetails from "./Pages/PlantDetails/PlantDetails";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,9 @@ const router = createBrowserRouter([
       { path: "plants", loader: () => fetch("data.json"), Component: Plants },
       { path: "myPlants", Component: MyPlants },
       { path: "dashboard", Component: Dashboard },
+      {path:"/plantDetails/:plantId",
+        loader:()=>fetch('data.json'),
+        Component:PlantDetails}
     ],
   },
 ]);
