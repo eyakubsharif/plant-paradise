@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "../../components/Banner/Banner";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import Card from "../../components/Card/Card";
 import BenefitCard from "../../components/Card/BenefitCard";
 
@@ -24,9 +24,11 @@ const Home = () => {
             ))}
         </div>
         <div className="flex items-center justify-center">
-          <button className="font-bold text-xs bg-[#355e3b] text-white mx-auto px-5 py-2 rounded-2xl  my-5">
+         <Link to={`/plants`}>
+             <button className="font-bold text-xs bg-[#355e3b] text-white mx-auto px-5 py-2 rounded-2xl  my-5">
             Explore More Plants
           </button>
+         </Link>
         </div>
       </div>
       <div className="py-15">

@@ -20,5 +20,11 @@ const addItemToLocalStorage = (id) => {
     toast.success('Added to MyPlant')
   }
 };
+const removeFromLocalStorage = (id) => {
+  const storedData = getDataFromLocalStorage();
+  const remainingData = storedData.filter((item) => item !== id);
+  localStorage.setItem("wishList", JSON.stringify(remainingData));
+  toast.error("Removed from MyPlant");
+};
 
-export { getDataFromLocalStorage, addItemToLocalStorage };
+export { getDataFromLocalStorage, addItemToLocalStorage ,removeFromLocalStorage };

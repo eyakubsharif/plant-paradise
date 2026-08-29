@@ -3,6 +3,7 @@ import { CiLight } from "react-icons/ci";
 import { GiChestnutLeaf } from "react-icons/gi";
 import { IoWaterOutline } from "react-icons/io5";
 import { LuChartNoAxesColumn } from "react-icons/lu";
+import { Link } from "react-router";
 
 const Card = ({ plant }) => {
   console.log(plant);
@@ -22,9 +23,11 @@ const Card = ({ plant }) => {
           </span>
         </div>
         <p className="line-clamp-2">{description}</p>
-        <button className="bg-[#355e3b] px-5 rounded-2xl py-2 text-white shadow-2xl text-xs font-bold mt-1">
-          View Details
-        </button>
+        <Link to={`/plantDetails/${plant.id}`}>
+          <button className="bg-[#355e3b] px-5 rounded-2xl py-2 text-white shadow-2xl text-xs font-bold mt-1">
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );
