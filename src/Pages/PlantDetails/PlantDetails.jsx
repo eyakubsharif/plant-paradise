@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaHeart, FaStar } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router";
 import { addItemToLocalStorage } from "../../utilitis";
 import { ToastContainer } from "react-toastify";
 
+import { PlantContext } from './../../Context/PlantContext';
+
 const PlantDetails = () => {
+  const {handleMyPlant} =useContext(PlantContext)
   const [plants, setPlants] = useState([]);
   const { plant } = useLoaderData();
   const { plantId } = useParams();
@@ -25,9 +28,10 @@ const PlantDetails = () => {
     size,
   } = filter;
 
-  const handleMyPlantBtn = (id) => {
-    addItemToLocalStorage(id);
-  };
+  // const handleMyPlantBtn = (id) => {
+  //   addItemToLocalStorage(id);
+  //   setPlant(id)
+  // };
   console.log(plant);
   return (
     <div className="flex w-11/12 mx-auto mt-5">
@@ -64,7 +68,7 @@ const PlantDetails = () => {
           <small className="font-bold">Difficulty</small> : {difficulty}
         </p>
         <button
-          onClick={() => handleMyPlantBtn(`${id}`)}
+          onClick={()=>handleMyPlant(filter)}
           className=" bg-gray-200 mt-5 px-5 py-2 rounded shadow-2xl flex items-center gap-3 text-sm"
         >
           <ToastContainer></ToastContainer>
